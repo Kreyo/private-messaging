@@ -7,5 +7,9 @@
 	<strong>Message:</strong>
 	<?php echo $message->message; ?></p>
 
+<?php
+    if($message->name == Auth::instance()->get_screen_name())
+    { ?>
 <?php echo Html::anchor('messages/edit/'.$message->id, 'Edit'); ?> |
+<?php } ?>
 <?php echo Html::anchor('messages', 'Back'); ?>

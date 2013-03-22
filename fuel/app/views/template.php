@@ -14,6 +14,17 @@
 			<div class="span16">
 				<h1><?php echo $title; ?></h1>
 				<hr>
+<?php
+   if(Auth::instance()->check())
+    {
+     $link = array("Logged in as: ".Auth::instance()->get_screen_name(), Html::anchor('users/logout', 'Logout'));
+    }
+   else
+    {
+     $link = array(Html::anchor('users/login', 'Login'), Html::anchor('users/register', 'Register'));
+    }
+   echo Html::ul($link);
+?>        
 <?php if (Session::get_flash('success')): ?>
 				<div class="alert-message success">
 					<p>

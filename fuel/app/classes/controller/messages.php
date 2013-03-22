@@ -34,7 +34,7 @@ class Controller_Messages extends Controller_Template
 			if ($val->run())
 			{
 				$message = Model_Message::forge(array(
-					'name' => Input::post('name'),
+					'name' => Auth::instance()->get_screen_name(),
 					'message' => Input::post('message'),
 				));
 

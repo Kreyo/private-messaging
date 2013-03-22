@@ -2,10 +2,9 @@
 
 	<fieldset>
 		<div class="clearfix">
-			<?php echo Form::label('Name', 'name'); ?>
 
 			<div class="input">
-				<?php echo Form::input('name', Input::post('name', isset($message) ? $message->name : ''), array('class' => 'span4')); ?>
+				<?php echo 'Name: '.Auth::instance()->get_screen_name(); ?>
 
 			</div>
 		</div>
