@@ -1,3 +1,11 @@
+config
+docs
+oil
+CHANGELOG
+logs
+cache
+LICENSE
+
 #################
 ## Eclipse
 #################

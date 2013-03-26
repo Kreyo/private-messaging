@@ -11,19 +11,21 @@
 <body>
 	<div class="container">
 		<div class="row">
-			<div class="span16">
+			<div class="span12">
 				<h1><?php echo $title; ?></h1>
 				<hr>
 <?php
    if(Auth::instance()->check())
     {
      $link = array("Logged in as: ".Auth::instance()->get_screen_name(), Html::anchor('users/logout', 'Logout'));
+     $attr = array('id' => 'todo','class' => 'nav nav-pills');
     }
    else
     {
      $link = array(Html::anchor('users/login', 'Login'), Html::anchor('users/register', 'Register'));
+     $attr = array('id' => 'todo','class' => 'nav nav-pills');
     }
-   echo Html::ul($link);
+   echo Html::ul($link, $attr);
 ?>        
 <?php if (Session::get_flash('success')): ?>
 				<div class="alert-message success">
@@ -40,7 +42,7 @@
 				</div>
 <?php endif; ?>
 			</div>
-			<div class="span16">
+			<div class="span12">
 <?php echo $content; ?>
 			</div>
 		</div>
