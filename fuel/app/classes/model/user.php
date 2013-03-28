@@ -26,10 +26,12 @@ class Model_User extends \Orm\Model
 		),
 	);
   public static function register(Fieldset $form){
+    $upload_path = assets_server_path('assets/', 'images');
     $form->add('username', 'Username:')->add_rule('required');
     $form->add('password', 'Choose Password:', array('type'=>'password'))->add_rule('required');
     $form->add('password2', 'Re-type Password:', array('type' => 'password'))->add_rule('required');
     $form->add('email', 'E-mail:')->add_rule('required')->add_rule('valid_email');
+    $form->add('avatar', 'Upload your avatar:', array('type'=>'file','upload_path' => $upload_path, 'overwrite' => TRUE));
     $form->add('submit', ' ', array('type'=>'submit', 'value' => 'Register'));
     return $form;
   }
@@ -44,6 +46,8 @@ class Model_User extends \Orm\Model
       $username = $form->field('username')->get_attribute('value');
       $password = $form->field('password')->get_attribute('value');
       $email = $form->field('email')->get_attribute('value');
+      $avatar= $form->field('avatar')->get_attribute('value');
+
       try
       {
         $user = $auth->create_user($username, $password, $email);

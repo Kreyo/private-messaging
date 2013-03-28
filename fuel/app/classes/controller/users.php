@@ -62,7 +62,7 @@ class Controller_Users extends Controller_Template
     public function action_profile(){
         $auth = Auth::instance();
         $view = View::forge('users/profile');
-        $this->template->title = 'User &raquo; profile';
+        $this->template->title = 'Your profile';
         $this->template->content = $view;
     }
 }
