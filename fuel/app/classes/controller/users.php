@@ -59,5 +59,10 @@ class Controller_Users extends Controller_Template
     $this->template->title = 'User &raquo; Register';
     $this->template->content = $view;
 	}
-
+    public function action_profile(){
+        $auth = Auth::instance();
+        $view = View::forge('users/profile');
+        $this->template->title = 'User &raquo; profile';
+        $this->template->content = $view;
+    }
 }

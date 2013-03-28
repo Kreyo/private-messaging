@@ -17,7 +17,7 @@
 <?php
    if(Auth::instance()->check())
     {
-     $link = array("Logged in as: ".Auth::instance()->get_screen_name(), Html::anchor('users/logout', 'Logout'));
+     $link = array("Logged in as: ".Auth::instance()->get_screen_name(), Html::anchor('users/logout', 'Logout'), Html::anchor('users/profile', 'Profile'));
      $attr = array('id' => 'todo','class' => 'nav nav-pills');
     }
    else
@@ -42,8 +42,10 @@
 				</div>
 <?php endif; ?>
 			</div>
-			<div class="span12">
-<?php echo $content; ?>
+        </div>
+        <div class="row">
+		    <div class="span12">
+                <?php echo $content; ?>
 			</div>
 		</div>
 		<footer>

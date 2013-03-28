@@ -35,6 +35,7 @@ class Controller_Messages extends Controller_Template
 			{
 				$message = Model_Message::forge(array(
 					'name' => Auth::instance()->get_screen_name(),
+                    'adress_name' => Input::post('adress_name'),
 					'message' => Input::post('message'),
 				));
 
@@ -76,6 +77,7 @@ class Controller_Messages extends Controller_Template
 		if ($val->run())
 		{
 			$message->name = Input::post('name');
+            $message->adress_name = Input::post('adress_name');
 			$message->message = Input::post('message');
 
 			if ($message->save())

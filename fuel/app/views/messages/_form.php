@@ -9,8 +9,13 @@
 			</div>
 		</div>
 		<div class="clearfix">
-			<?php echo Form::label('Message', 'message'); ?>
 
+
+            <?php echo Form::label('Message to:', 'Message_to'); ?>
+            <div class="input">
+                <?php echo Form::textarea('adress_name', Input::post('adress_name', isset($adress_name) ? $adress_name->adress_name : ''), array('class' => 'span1')); ?>
+
+            </div>
 			<div class="input">
 				<?php echo Form::textarea('message', Input::post('message', isset($message) ? $message->message : ''), array('class' => 'span8', 'rows' => 8)); ?>
 

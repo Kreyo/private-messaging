@@ -3,7 +3,9 @@
     <?php if ($messages): ?>
     <ul>
     <?php foreach ($messages as $message): ?><tr>
+       <?php if($message->adress_name == Auth::instance()->get_screen_name() or $message->adress_name == NULL or $message->name == Auth::instance()->get_screen_name()) { ?>
             <td><b><?php echo $message->name; ?></b></td>
+            <?php if($message->adress_name != NULL){?><td><b><?php echo"- ", $message->adress_name; ?></b></td> <br/>    <?php }; ?>
             <td><?php echo $message->message; ?></td> <br/>
                 <td><?php echo Html::anchor('messages/view/'.$message->id, 'View'); ?>
                     <?php
@@ -16,6 +18,7 @@
                 </td>
                 <br/>
             </tr>
+       <?php } ?>
     <?php endforeach; ?>
     </ul>
     <?php else: ?>

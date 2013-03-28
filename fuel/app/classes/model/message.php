@@ -6,6 +6,7 @@ class Model_Message extends Model
 	protected static $_properties = array(
 		'id',
 		'name',
+        'adress_name',
 		'message',
 		'created_at',
 		'updated_at',
