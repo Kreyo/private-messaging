@@ -46,6 +46,7 @@
         <div class="row">
 		    <div class="span12">
                 <?php echo $content; ?>
+
 			</div>
 		</div>
 		<footer>

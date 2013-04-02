@@ -7,9 +7,9 @@
          <?php if ($messages): ?>
          <ul>
              <?php foreach ($messages as $message): ?><tr>
-                 <?php if($message->adress_name == Auth::instance()->get_screen_name() or $message->adress_name == NULL or $message->name == Auth::instance()->get_screen_name()) { ?>
+                 <?php if($message->recipient == Auth::instance()->get_screen_name() or $message->recipient == NULL or $message->name == Auth::instance()->get_screen_name()) { ?>
                  <td><b><?php echo $message->name; ?></b></td>
-                <?php if($message->adress_name != NULL){?><td><b><?php echo"- ", $message->adress_name; ?></b></td> <br/>    <?php }; ?>
+                <?php if($message->recipient != NULL){?><td><b><?php echo"- ", $message->recipient; ?></b></td> <br/>    <?php }; ?>
                 <td><?php echo $message->message; ?></td> <br/>
                 <td><?php echo Html::anchor('messages/view/'.$message->id, 'View'); ?>
                     <?php
@@ -24,6 +24,7 @@
                 </tr>
                 <?php } ?>
             <?php endforeach; ?>
+         <?php echo $pagination; ?>
     </ul>
     <?php else: ?>
     <p>No Messages.</p>

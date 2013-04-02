@@ -4,8 +4,21 @@ class Controller_Messages extends Controller_Template
 
 	public function action_index()
 	{
-		$data['messages'] = Model_Message::find('all');
+
+        $total_posts = DB::count_records('messages');
+
+        $config = array(
+            'total_items' => $total_posts,
+            'per_page'       => 5,
+            'uri_segment'    => 2,
+        );
+        Pagination::set_config($config);
+		$data['messages'] = Model_Message::find('all', array(
+            'limit' => 3,
+            'offset' => Pagination::get('offset')
+        ));
 		$this->template->title = "Messages";
+        $data['pagination'] = Pagination::create_links();
 		$this->template->content = View::forge('messages/index', $data);
 
 	}
@@ -91,7 +104,7 @@ class Controller_Messages extends Controller_Template
 		if ($val->run())
 		{
 			$message->name = Input::post('name');
-            $message->adress_name = Input::post('recipient');
+            $message->recipient = Input::post('recipient');
 			$message->message = Input::post('message');
 
 			if ($message->save())
