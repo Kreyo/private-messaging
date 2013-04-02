@@ -9,6 +9,20 @@ class Controller_Messages extends Controller_Template
 		$this->template->content = View::forge('messages/index', $data);
 
 	}
+    public function action_read()
+    {
+        $data['messages'] = Model_Message::find('all');
+        $this->template->title = "Messages";
+        $this->template->content = View::forge('messages/index', $data);
+
+    }
+    public function action_new()
+    {
+        $data['messages'] = Model_Message::find('all');
+        $this->template->title = "Messages";
+        $this->template->content = View::forge('messages/index', $data);
+
+    }
 
 	public function action_view($id = null)
 	{
@@ -22,7 +36,7 @@ class Controller_Messages extends Controller_Template
 
 		$this->template->title = "Message";
 		$this->template->content = View::forge('messages/view', $data);
-
+        $data['is_read'] = TRUE;
 	}
 
 	public function action_create()
@@ -35,7 +49,7 @@ class Controller_Messages extends Controller_Template
 			{
 				$message = Model_Message::forge(array(
 					'name' => Auth::instance()->get_screen_name(),
-                    'adress_name' => Input::post('adress_name'),
+                    'recipient' => Input::post('recipient'),
 					'message' => Input::post('message'),
 				));
 
@@ -77,7 +91,7 @@ class Controller_Messages extends Controller_Template
 		if ($val->run())
 		{
 			$message->name = Input::post('name');
-            $message->adress_name = Input::post('adress_name');
+            $message->adress_name = Input::post('recipient');
 			$message->message = Input::post('message');
 
 			if ($message->save())

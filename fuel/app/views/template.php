@@ -17,7 +17,7 @@
 <?php
    if(Auth::instance()->check())
     {
-     $link = array("Logged in as: ".Auth::instance()->get_screen_name(), Html::anchor('users/logout', 'Logout'), Html::anchor('users/profile', 'Profile'));
+     $link = array("Logged in as: ".Auth::instance()->get_screen_name(), Html::anchor('users/logout', 'Logout'), Html::anchor('users/profile', 'Profile'), Html::anchor('messages/new', 'New messages'), Html::anchor('messages/read', 'Old messages'));
      $attr = array('id' => 'todo','class' => 'nav nav-pills');
     }
    else

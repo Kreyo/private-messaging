@@ -13,7 +13,7 @@
 
             <?php echo Form::label('Message to:', 'Message_to'); ?>
             <div class="input">
-                <?php echo Form::textarea('adress_name', Input::post('adress_name', isset($adress_name) ? $adress_name->adress_name : ''), array('class' => 'span1')); ?>
+                <?php echo Form::textarea('recipient', Input::post('recipient', isset($recipient) ? $recipient->recipient : ''), array('class' => 'span1')); ?>
 
             </div>
 			<div class="input">

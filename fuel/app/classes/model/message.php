@@ -5,8 +5,9 @@ class Model_Message extends Model
 {
 	protected static $_properties = array(
 		'id',
+        'is_read',
 		'name',
-        'adress_name',
+        'recipient',
 		'message',
 		'created_at',
 		'updated_at',
