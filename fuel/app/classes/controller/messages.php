@@ -8,12 +8,14 @@ class Controller_Messages extends Controller_Template
         $total_posts = DB::count_records('messages');
 
         $config = array(
+            'pagination_url' => 'http://hello_fuel/messages/',
             'total_items' => $total_posts,
             'per_page'       => 5,
             'uri_segment'    => 2,
         );
         Pagination::set_config($config);
 		$data['messages'] = Model_Message::find('all', array(
+
             'limit' => 3,
             'offset' => Pagination::get('offset')
         ));

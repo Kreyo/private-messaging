@@ -45,8 +45,9 @@ class Model_User extends \Orm\Model
       $username = $form->field('username')->get_attribute('value');
       $password = $form->field('password')->get_attribute('value');
       $email = $form->field('email')->get_attribute('value');
-      Upload::field('avatar');
+
       $config = array(
+          'field' => 'avatar',
           'path' => DOCROOT.'assets'.'img',
           'ext_whitelist' => array('img', 'jpg', 'jpeg', 'gif', 'png'),
           'filename' => $form->field('username')->get_attribute('value'),

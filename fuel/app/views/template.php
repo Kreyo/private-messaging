@@ -16,16 +16,27 @@
 				<hr>
 <?php
    if(Auth::instance()->check())
-    {
-     $link = array("Logged in as: ".Auth::instance()->get_screen_name(), Html::anchor('users/logout', 'Logout'), Html::anchor('users/profile', 'Profile'), Html::anchor('messages/new', 'New messages'), Html::anchor('messages/read', 'Old messages'));
-     $attr = array('id' => 'todo','class' => 'nav nav-pills');
-    }
+    { ?>
+
+    <p>Logged in as: </p> <?php echo Auth::instance()->get_screen_name() ?>
+    <br/>
+    <ul class = "nav nav-pills">
+        <li><a href='/users/logout'>Logout </li>
+        <li><a href='/users/profile'>Profile </li>
+        <li><a href='/messages/new'>New Messages</li>
+        <li><a href='/messages/read'>Old Messages</li>
+    </ul>
+    <?php }
    else
-    {
-     $link = array(Html::anchor('users/login', 'Login'), Html::anchor('users/register', 'Register'));
-     $attr = array('id' => 'todo','class' => 'nav nav-pills');
-    }
-   echo Html::ul($link, $attr);
+    { ?>
+
+      <ul class = "nav nav-pills">
+          <li <?php if(URi::segment(2) == 'login') { ?> class="active"<?php } ?> ><a href='/users/login'>Login </a></li>
+          <li <?php if(URi::segment(2) == 'register') { ?> class="active"<?php } ?> ><a href='/users/register'>Register </a></li>
+
+      </ul>
+    <?php }
+  // echo Html::ul($link, $attr);
 ?>        
 <?php if (Session::get_flash('success')): ?>
 				<div class="alert-message success">
