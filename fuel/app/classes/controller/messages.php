@@ -24,7 +24,7 @@ class Controller_Messages extends Controller_Template
 		$this->template->content = View::forge('messages/index', $data);
 
 	}
-    public function action_read()
+    public function action_sent()
     {
         $data['messages'] = Model_Message::find('all');
         $this->template->title = "Messages";

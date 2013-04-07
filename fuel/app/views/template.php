@@ -21,10 +21,10 @@
     <p>Logged in as: </p> <?php echo Auth::instance()->get_screen_name() ?>
     <br/>
     <ul class = "nav nav-pills">
-        <li><a href='/users/logout'>Logout </li>
-        <li><a href='/users/profile'>Profile </li>
-        <li><a href='/messages/new'>New Messages</li>
-        <li><a href='/messages/read'>Old Messages</li>
+        <li><a href='/users/logout'>Logout</a> </li>
+        <li><a href='/users/profile'>Profile</a> </li>
+        <li><a href='/messages/new'>New Messages</a></li>
+        <li><a href='/messages/sent'>Sent Messages</a></li>
     </ul>
     <?php }
    else

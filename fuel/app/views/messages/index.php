@@ -23,9 +23,9 @@
                 <br/>
                 </tr>
                 <?php } ?>
-            <?php endforeach; ?>
-         <?php echo $pagination; ?>
-    </ul>
+             <?php endforeach; ?>
+             <?php echo Pagination::instance()->pages_render(); ?>
+         </ul>
     <?php else: ?>
     <p>No Messages.</p>
     <?php endif; ?>
