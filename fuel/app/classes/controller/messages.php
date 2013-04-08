@@ -8,34 +8,64 @@ class Controller_Messages extends Controller_Template
         $total_posts = DB::count_records('messages');
 
         $config = array(
-            'pagination_url' => 'http://hello_fuel/messages/',
+            'pagination_url' => '/messages/',
             'total_items' => $total_posts,
-            'per_page'       => 5,
+            'per_page'       => 6,
             'uri_segment'    => 2,
         );
-        Pagination::set_config($config);
+        $pagination = Pagination::forge('index_pagination', $config);
 		$data['messages'] = Model_Message::find('all', array(
 
-            'limit' => 3,
+            'limit' => 5,
             'offset' => Pagination::get('offset')
         ));
 		$this->template->title = "Messages";
-        $data['pagination'] = Pagination::create_links();
+        $data['pagination'] = $pagination->render();
 		$this->template->content = View::forge('messages/index', $data);
 
 	}
     public function action_sent()
     {
-        $data['messages'] = Model_Message::find('all');
-        $this->template->title = "Messages";
-        $this->template->content = View::forge('messages/index', $data);
+        $total_posts = DB::count_records('messages');
+
+        $config = array(
+            'pagination_url' => '/messages/sent',
+            'total_items' => $total_posts,
+            'per_page'       => 6,
+            'uri_segment'    => 3,
+        );
+        $pagination = Pagination::forge('sent_pagination',$config);
+        $data['messages'] = Model_Message::find('all', array(
+
+            'limit' => 5,
+            'offset' => Pagination::get('offset')
+        ));
+
+        $this->template->title = "Sent Messages";
+        $data['pagination'] = $pagination->render();
+        $this->template->content = View::forge('messages/sent', $data);
 
     }
     public function action_new()
     {
-        $data['messages'] = Model_Message::find('all');
-        $this->template->title = "Messages";
-        $this->template->content = View::forge('messages/index', $data);
+        $total_posts = DB::count_records('messages');
+
+        $config = array(
+            'pagination_url' => '/messages/new',
+            'total_items' => $total_posts,
+            'per_page'       => 6,
+            'uri_segment'    => 3,
+        );
+        $pagination = Pagination::forge('new_pagination', $config);
+		$data['messages'] = Model_Message::find('all', array(
+
+            'limit' => 5,
+            'offset' => Pagination::get('offset')
+        ));
+
+        $this->template->title = "New Messages";
+        $data['pagination'] = $pagination->render();
+        $this->template->content = View::forge('messages/new', $data);
 
     }
 

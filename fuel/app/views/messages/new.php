@@ -27,6 +27,7 @@ if(Auth::instance()->check())
     </tr>
 
     <?php endforeach; ?>
+    <?php echo $pagination; ?>
 </ul>
 <?php else: ?>
 <p>No Messages.</p>
