@@ -51,8 +51,14 @@ class Controller_Users extends Controller_Template
       }
       else
     {
-      Session::set_flash('success', 'User created.');
-      Response::redirect('./');
+        $register_message = Model_Message::forge(array(
+            'name' => 'Admin',
+            'recipient' => $form->username,
+            'message' => 'Welcome to our neat little messaging system!',
+        ));
+        $register_message->save();
+        Session::set_flash('success', 'User created.');
+        Response::redirect('./');
     }
     }
     $view->set('reg', $form->build(), false);
@@ -64,5 +70,9 @@ class Controller_Users extends Controller_Template
         $view = View::forge('users/profile');
         $this->template->title = 'Your profile';
         $this->template->content = $view;
+        if (\Input::method() === 'POST'){
+            $new_data=array('email' => $_POST['email_change']);
+            $auth->update_user($new_data);
+        }
     }
 }
